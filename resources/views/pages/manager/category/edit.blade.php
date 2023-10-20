@@ -1,0 +1,39 @@
+@extends('layouts.dashboard')
+@section('page-contents')
+    <div class="container-fluid px-5">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard Manager</h1>
+        </div>
+
+        <div class="text-sm font-weight-bold text-secondary mb-5">
+            Edit Data Category
+        </div>
+
+        {{-- Contents --}}
+        <div class="row">
+            <form action="{{ route('manager-update-category', $category->id) }}" class="w-100" method="POST"
+                enctype="multipart/form-data">
+                @csrf
+                <div class="card card-shadow w-100 px-5 py-5">
+                    <div class="row mb-3 w-100">
+                        <div class="w-50 px-4   ">
+                            <label for="name" class="form-label text-black">Name</label>
+                            <input type="text" class="form-control" id="name" name="name"
+                                value="{{ $category->name }}" required>
+                        </div>
+                        <div class="w-50 px-4">
+                            <label for="image" class="form-label text-black">Image</label>
+                            <input type="file" class="form-control" id="image" name="image">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card card-shadow w-100 px-4 py-4 mt-5">
+                    <button type="submit" class="btn btn-warning w-100 mb-4">Save</button>
+                    <a href="{{ route('manager-data-categories') }}" class="btn btn-danger w-100">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+@endsection
