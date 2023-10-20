@@ -36,22 +36,6 @@ Route::group(['middleware' =>['isAdmin'], 'prefix' => 'admin'], function(){
     Route::get('/admin-edit-data-user/{id}', [UserController::class, 'edit'])->name('edit-user');
     Route::post('/admin-update-data-user/{id}', [UserController::class, 'update'])->name('update-user');
     Route::delete('/admin-delete-data-user/{id}', [UserController::class, 'destroy'])->name('delete-user');
-
-    //Categories Data
-    Route::get('admin-data-category', [CategoryController::class, 'index'])->name('data-categories');
-    Route::get('admin-add-data-category', [CategoryController::class, 'create'])->name('add-category');
-    Route::post('admin-save-data-category', [CategoryController::class, 'store'])->name('save-category');
-    Route::get('admin-edit-data-category/{id}', [CategoryController::class, 'edit'])->name('edit-category');
-    Route::post('admin-update-data-category/{id}', [CategoryController::class, 'update'])->name('update-category');
-    Route::delete('admin-delete-data-category/{id}', [CategoryController::class, 'destroy'])->name('delete-category');
-
-    //Products Data
-    Route::get('admin-data-product', [ProductController::class, 'index'])->name('data-product');
-    Route::get('admin-add-product', [ProductController::class, 'create'])->name('add-product');
-    Route::post('admin-save-product', [ProductController::class, 'store'])->name('save-product');
-    Route::get('admin-edit-product/{id}', [ProductController::class, 'edit'])->name('edit-product');
-    Route::post('admin-update-product/{id}', [ProductController::class, 'update'])->name('update-product');
-    Route::delete('admin-delete-product/{id}', [ProductController::class, 'destroy'])->name('delete-product');
 });
 
 //Manager Area

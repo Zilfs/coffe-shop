@@ -37,7 +37,8 @@
         <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
-    @else
+    @endif
+    @if (Auth::user()->roles == 'MANAGEMENT')
         <!-- Heading -->
         <div class="sidebar-heading text-white">
             Menus
@@ -45,14 +46,12 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link"
-                href="{{ Auth::user()->roles == 'ADMIN' ? route('data-categories') : (Auth::user()->roles == 'MANAGER' ? route('manager-data-categories') : '') }}">
+            <a class="nav-link" href="{{ route('manager-data-categories') }}">
                 <i class="fa-solid fa-clipboard-list"></i>
                 <span>Categories</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link"
-                href="{{ Auth::user()->roles == 'ADMIN' ? route('data-product') : (Auth::user()->roles == 'MANAGER' ? route('manager-data-product') : '') }}">
+            <a class="nav-link" href="{{ route('manager-data-product') }}">
                 <i class="fa-solid fa-mug-hot"></i>
                 <span>Products</span></a>
         </li>
@@ -66,9 +65,30 @@
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
+
         <li class="nav-item">
-            <a class="nav-link"
-                href="{{ Auth::user()->roles == 'ADMIN' ? route('data-user') : (Auth::user()->roles == 'MANAGER' ? route('manager-data-user') : '') }}">
+            <a class="nav-link" href="charts.html">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>History Transactions</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+    @endif
+    @if (Auth::user()->roles == 'ADMIN')
+        <!-- Heading -->
+        <div class="sidebar-heading text-white">
+            Operational
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('data-user') }}">
                 <i class="fa-solid fa-users"></i>
                 <span>Users</span></a>
         </li>
@@ -86,6 +106,7 @@
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
     @endif
+
 
 
 

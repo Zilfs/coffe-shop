@@ -16,17 +16,11 @@ class ProductController extends Controller
     {
         $data = Product::with('category')->get();
 
-        if(Auth::user()->roles == 'ADMIN')
-        {
-            return view('pages.admin.product.index', [
-                'product' => $data,
-            ]);   
-        }else if(Auth::user()->roles == 'MANAGER')
-        {
-            return view('pages.manager.product.index', [
-                'product' => $data,
-            ]);   
-        }
+
+        return view('pages.manager.product.index', [
+            'product' => $data,
+        ]);   
+
         
     }
 
@@ -62,13 +56,9 @@ class ProductController extends Controller
 
         Product::create($data);
 
-        if(Auth::user()->roles == 'ADMIN')
-        {
-            return redirect()->route('data-product');
-        }else if(Auth::user()->roles == 'MANAGER')
-        {
-            return redirect()->route('manager-data-product');
-        }
+
+        return redirect()->route('manager-data-product');
+        
         
     }
 
@@ -88,19 +78,13 @@ class ProductController extends Controller
         $data = Product::findOrFail($id);
         $category = Category::all();
 
-        if(Auth::user()->roles == 'ADMIN')
-        {
-            return view('pages.admin.product.edit',[
-                'product' => $data,
-                'category' => $category,
-            ]);
-        }else if(Auth::user()->roles == 'MANAGER')
-        {
-            return view('pages.manager.product.edit',[
-                'product' => $data,
-                'category' => $category,
-            ]);
-        }
+
+
+        return view('pages.manager.product.edit',[
+            'product' => $data,
+            'category' => $category,
+        ]);
+
         
     }
 
@@ -132,13 +116,8 @@ class ProductController extends Controller
         $item = Product::findOrFail($id);
         $item->delete();
 
-        if(Auth::user()->roles == 'ADMIN')
-        {
-            return redirect()->route('data-product');
-        }else if(Auth::user()->roles == 'MANAGER')
-        {
-            return redirect()->route('manager-data-product');
-        }
+        return redirect()->route('manager-data-product');
+
         
     }
 }

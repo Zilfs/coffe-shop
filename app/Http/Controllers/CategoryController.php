@@ -54,14 +54,8 @@ class CategoryController extends Controller
         $data['image'] = $request->file('image')->store('assets/categories', 'public');
 
         Category::create($data);
-        if(Auth::user()->roles == 'ADMIN')
-        {
-            return redirect()->route('data-categories'); 
-        }else if(Auth::user()->roles == 'MANAGER')
-        {
-            return redirect()->route('manager-data-categories'); 
-        }
-        
+      
+        return redirect()->route('manager-data-categories');       
 
     }
 
@@ -79,19 +73,11 @@ class CategoryController extends Controller
     public function edit(string $id)
     {
         $data = Category::findOrFail($id);
+        
+        return view('pages.manager.category.edit',[
+            'category' => $data,
+        ]);
 
-       
-        if(Auth::user()->roles == 'ADMIN')
-        {
-             return view('pages.admin.category.edit',[
-                'category' => $data,
-            ]);
-        }else if(Auth::user()->roles == 'MANAGER')
-        {
-            return view('pages.manager.category.edit',[
-                'category' => $data,
-            ]);
-        }
     }
 
     /**
@@ -103,13 +89,9 @@ class CategoryController extends Controller
         $data['image'] = $request->file('image')->store('assets/categories', 'public');
         $item = Category::findOrFail($id);
         $item->update($data);
-        if(Auth::user()->roles == 'ADMIN')
-        {
-            return redirect()->route('data-categories');
-        }else if(Auth::user()->roles == 'MANAGER')
-        {
-            return redirect()->route('manager-data-categories');
-        }
+
+
+        return redirect()->route('manager-data-categories');
         
 
     }
@@ -122,14 +104,8 @@ class CategoryController extends Controller
         $item = Category::findOrFail($id);
         $item->delete();
 
-        if(Auth::user()->roles == 'ADMIN')
-        {
-            return redirect()->route('data-categories');
-        }else if(Auth::user()->roles == 'MANAGER')
-        {
-            return redirect()->route('manager-data-categories');
-        }
-       
+
+        return redirect()->route('manager-data-categories');       
         
     }
 }
