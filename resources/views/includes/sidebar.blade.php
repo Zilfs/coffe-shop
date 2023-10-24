@@ -25,7 +25,7 @@
                 <span>Add New Order</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="{{ route('transactions') }}">
                 <i class="fa-solid fa-clock-rotate-left"></i>
                 <span>History Transactions</span></a>
         </li>
@@ -38,7 +38,7 @@
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
     @endif
-    @if (Auth::user()->roles == 'MANAGEMENT')
+    @if (Auth::user()->roles == 'MANAGER')
         <!-- Heading -->
         <div class="sidebar-heading text-white">
             Menus
@@ -67,7 +67,7 @@
         <!-- Nav Item - Pages Collapse Menu -->
 
         <li class="nav-item">
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="{{ route('transactions') }}">
                 <i class="fa-solid fa-clock-rotate-left"></i>
                 <span>History Transactions</span></a>
         </li>
@@ -93,7 +93,7 @@
                 <span>Users</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="{{ route('transactions') }}">
                 <i class="fa-solid fa-clock-rotate-left"></i>
                 <span>History Transactions</span></a>
         </li>

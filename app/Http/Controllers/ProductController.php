@@ -31,17 +31,10 @@ class ProductController extends Controller
     {
         $data = Category::all();
 
-        if(Auth::user()->roles == 'ADMIN')
-        {
-            return view('pages.admin.product.add', [
-                'category' => $data,
-            ]);
-        }else if(Auth::user()->roles == 'MANAGER')
-        {
-            return view('pages.manager.product.add', [
-                'category' => $data,
-            ]);
-        }
+        return view('pages.manager.product.add', [
+            'category' => $data,
+        ]);
+
         
     }
 
@@ -97,14 +90,8 @@ class ProductController extends Controller
         $data['image'] = $request->file('image')->store('assets/products', 'public');
         $item = Product::findOrFail($id);
         $item->update($data);
-        
-        if(Auth::user()->roles == 'ADMIN')
-        {
-            return redirect()->route('data-product');
-        }else if(Auth::user()->roles == 'MANAGER')
-        {
-            return redirect()->route('manager-data-product');
-        }
+             
+        return redirect()->route('manager-data-product');   
         
     }
 

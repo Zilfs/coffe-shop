@@ -20,7 +20,8 @@
                             </div>
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Order Code</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{ $recent_order->order->order_code }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fa-solid fa-user-clock fa-4x text-gray-300"></i>
@@ -40,7 +41,7 @@
                             </div>
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                 Lots of orders today</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">215,000 Transactions</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $transactions }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fa-solid fa-cash-register fa-4x text-gray-300"></i>

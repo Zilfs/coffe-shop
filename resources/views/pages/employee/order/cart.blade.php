@@ -109,7 +109,7 @@
                             @csrf
                             <input type="number" hidden value="{{ $total_price }}" name="total_price">
                             <button type="submit" class="btn btn-warning">Checkout</button>
-                        </form>>
+                        </form>
                     </div>
                 </div>
             @else

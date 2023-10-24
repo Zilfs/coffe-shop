@@ -9,6 +9,7 @@ use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,4 +79,9 @@ Route::group(['middleware' => ['isEmployee'], 'prefix' => 'employee'], function(
     Route::post('/edit-item-cart/{order_id}/{id}', [OrderController::class, 'edit'])->name('edit-cart');
     Route::delete('/delete-item-cart/{order_id}/{id}', [OrderController::class, 'destroy'])->name('delete-cart');
     Route::post('/checkout/{id}', [OrderController::class, 'checkout'])->name('checkout');
+});
+
+//Everyone
+Route::group(['middleware' => ['auth']], function(){
+    route::get('/transaction', [TransactionController::class, 'index'])->name('transactions');
 });

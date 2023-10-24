@@ -27,7 +27,7 @@
                                 </div>
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                     Total Income</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">${{ $revenue }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-dollar-sign fa-4x text-gray-300"></i>
@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                     Total Transaction</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">215,000 Transactions</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $transactions }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fa-solid fa-cash-register fa-4x text-gray-300"></i>
