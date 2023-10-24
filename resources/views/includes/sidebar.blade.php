@@ -3,7 +3,7 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center w-100"
-        href="{{ Auth::user()->roles == 'ADMIN' ? route('dashboard-admin') : (Auth::user()->roles == 'MANAGER' ? route('dashboard-manager') : '') }}">
+        href="{{ Auth::user()->roles == 'ADMIN' ? route('dashboard-admin') : (Auth::user()->roles == 'MANAGER' ? route('dashboard-manager') : route('dashboard-employee')) }}">
         <div class="">
             <img src="/images/icon-app.svg" alt="" class="w-50 h-50">
         </div>

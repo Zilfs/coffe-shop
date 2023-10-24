@@ -8,8 +8,13 @@
                     class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
         </div>
 
-        <div class="text-sm font-weight-bold text-secondary mb-5">
+        <div class="text-sm font-weight-bold text-secondary">
             Products Data
+        </div>
+        <div class="row">
+            <div class="card card-shadow w-100 px-4 py-4 my-5">
+                <a href="{{ route('manager-add-product') }}" class="btn btn-primary w-100">+ Add New Product</a>
+            </div>
         </div>
         <div class="row col-12 px-5">
             <div class="col-1 text-black">
@@ -71,10 +76,6 @@
             </div>
         @endforeach
 
-        <div class="row">
-            <div class="card card-shadow w-100 px-4 py-4 mt-5">
-                <a href="{{ route('manager-add-product') }}" class="btn btn-primary w-100">+ Add New Product</a>
-            </div>
-        </div>
+
     </div>
 @endsection

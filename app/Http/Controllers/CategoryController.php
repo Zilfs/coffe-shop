@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -102,6 +103,8 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         $item = Category::findOrFail($id);
+        $product = Product::where('category_id', $id);
+        $product->delete();
         $item->delete();
 
 

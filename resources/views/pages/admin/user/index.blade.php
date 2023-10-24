@@ -8,8 +8,11 @@
                     class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
         </div>
 
-        <div class="text-sm font-weight-bold text-secondary mb-5">
+        <div class="text-sm font-weight-bold text-secondary">
             Users Data
+        </div>
+        <div class="card card-shadow w-100 px-4 py-4 my-5">
+            <a href="{{ route('add-user') }}" class="btn btn-primary w-100">+ Add New Data</a>
         </div>
         <div class="row">
             <div class="card card-shadow w-100 px-5 py-5">
@@ -56,9 +59,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="card card-shadow w-100 px-4 py-4 mt-5">
-                <a href="{{ route('add-user') }}" class="btn btn-primary w-100">+ Add New Data</a>
-            </div>
+
         </div>
     </div>
 @endsection
