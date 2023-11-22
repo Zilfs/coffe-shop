@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Transaction;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class OrderController extends Controller
 {
     public function create(Request $request)
     {
-        $code = 'ODR - ' . mt_rand(0000,9999);
+        $code = 'ODR - ' . mt_rand(0000, 9999);
         Order::create([
             'customer_name' => $request->customer_name,
             'order_type' => $request->order_type,
@@ -48,15 +49,14 @@ class OrderController extends Controller
             'category' => $category,
             'product' => $product
         ]);
-
-        }
+    }
 
     public function add(Request $request, string $id, $category_id)
     {
         $order_id = $id;
         $product_price = $request->price;
         $sub_total_price = $product_price * $request->qty;
-        
+
         Cart::create([
             'order_id' => $order_id,
             'product_id' => $request->product_id,
@@ -80,14 +80,13 @@ class OrderController extends Controller
         ]);
     }
 
-    public function edit(Request $request, string $order_id, $id )
+    public function edit(Request $request, string $order_id, $id)
     {
         Cart::findOrFail($id)->update([
             'qty' => $request->qty,
         ]);
 
         return redirect()->route('cart', $order_id);
-
     }
 
     public function destroy(string $order_id, $id)
@@ -102,9 +101,18 @@ class OrderController extends Controller
         $date_time = Carbon::now();
         Transaction::create([
             'order_id' => $id,
-            'total_price' => $request->total_price, 
+            'total_price' => $request->total_price,
             'date_time' => $date_time,
         ]);
+
+        $items = Cart::with('product')->where('order_id', $id)->get();
+        $data = Transaction::with('order')->where('order_id', $id)->first();
+
+        $pdf = Pdf::loadView('pages.employee.order.receipt', [
+            'items' => $items,
+            'data' => $data,
+        ]);
+        return $pdf->download('pdf_file.pdf');
 
         return redirect()->route('dashboard-employee');
     }

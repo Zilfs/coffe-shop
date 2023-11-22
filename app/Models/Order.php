@@ -15,15 +15,13 @@ class Order extends Model
         'order_code',
     ];
 
-    protected $hidden = [
-
-    ];
+    protected $hidden = [];
 
     public function cart()
     {
         return $this->hasMany(Cart::class, 'order_id', 'id');
     }
-    
+
     public function transaction()
     {
         return $this->hasOne(Transaction::class, 'order_id', 'id');
